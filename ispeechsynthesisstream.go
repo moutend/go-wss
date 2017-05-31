@@ -12,9 +12,14 @@ type ISpeechSynthesisStream struct {
 
 type ISpeechSynthesisStreamVtbl struct {
 	ole.IInspectableVtbl
-	get_Markers uintptr
+	GetMarkers uintptr
 }
 
 func (v *ISpeechSynthesisStream) VTable() *ISpeechSynthesisStreamVtbl {
 	return (*ISpeechSynthesisStreamVtbl)(unsafe.Pointer(v.RawVTable))
+}
+
+func (v *ISpeechSynthesisStream) GetMarker(markers interface{}) (err error) {
+	err = sssGetMarkers(v, markers)
+	return
 }

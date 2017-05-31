@@ -12,10 +12,20 @@ type IInstalledVoicesStatic struct {
 
 type IInstalledVoicesStaticVtbl struct {
 	ole.IInspectableVtbl
-	get_AllVoices    uintptr
-	get_DefaultVoice uintptr
+	GetAllVoices    uintptr
+	GetDefaultVoice uintptr
 }
 
 func (v *IInstalledVoicesStatic) VTable() *IInstalledVoicesStaticVtbl {
 	return (*IInstalledVoicesStaticVtbl)(unsafe.Pointer(v.RawVTable))
+}
+
+func (v *IInstalledVoicesStatic) GetAllVoices(voices *IVoiceInformation) (err error) {
+	err = ivsGetAllVoices(v, voices)
+	return
+}
+
+func (v *IInstalledVoicesStatic) GetDefaultVoice(voice *IVoiceInformation) (err error) {
+	err = ivsGetDefaultVoice(v, voice)
+	return
 }

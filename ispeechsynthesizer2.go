@@ -12,9 +12,14 @@ type ISpeechSynthesizer2 struct {
 
 type ISpeechSynthesizer2Vtbl struct {
 	ole.IInspectableVtbl
-	get_Options uintptr
+	GetOptions uintptr
 }
 
 func (v *ISpeechSynthesizer2) VTable() *ISpeechSynthesizer2Vtbl {
 	return (*ISpeechSynthesizer2Vtbl)(unsafe.Pointer(v.RawVTable))
+}
+
+func (v *ISpeechSynthesizer2) GetOptions(options *ISpeechSynthesizerOptions) (err error) {
+	err = ss2GetOptions(v, options)
+	return
 }

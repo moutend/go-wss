@@ -24,26 +24,26 @@ func (v *IVoiceInformation) VTable() *IVoiceInformationVtbl {
 }
 
 func (v *IVoiceInformation) GetDisplayName(name *ole.HString) (err error) {
-	err = infoGetDisplayName(v, name)
+	err = viGetDisplayName(v, name)
 	return
 }
 
 func (v *IVoiceInformation) GetId(id *ole.HString) (err error) {
-	err = infoGetId(v, id)
+	err = viGetId(v, id)
 	return
 }
 
 func (v *IVoiceInformation) GetLanguage(language *ole.HString) (err error) {
-	err = infoGetLanguage(v, language)
+	err = viGetLanguage(v, language)
 	return
 }
 
 func (v *IVoiceInformation) GetDescription(description *ole.HString) (err error) {
-	err = infoGetDescription(v, description)
+	err = viGetDescription(v, description)
 	return
 }
 
 func (v *IVoiceInformation) GetGender(gender *ole.HString) (err error) {
-	err = infoGetGender(v, gender)
+	err = viGetGender(v, gender)
 	return
 }

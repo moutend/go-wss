@@ -23,21 +23,21 @@ func (v *ISpeechSynthesizer) VTable() *ISpeechSynthesizerVtbl {
 }
 
 func (v *ISpeechSynthesizer) SynthesizeTextToStreamAsync(text string, stream *ISpeechSynthesisStream) (err error) {
-	err = synthSynthesizeTextToStreamAsync(v, text, stream)
+	err = ssSynthesizeTextToStreamAsync(v, text, stream)
 	return
 }
 
 func (v *ISpeechSynthesizer) SynthesizeSsmlToStreamAsync(ssml string, stream *ISpeechSynthesisStream) (err error) {
-	err = synthSynthesizeSsmlToStreamAsync(v, ssml, stream)
+	err = ssSynthesizeSsmlToStreamAsync(v, ssml, stream)
 	return
 }
 
 func (v *ISpeechSynthesizer) PutVoice(info *IVoiceInformation) (err error) {
-	err = synthPutVoice(v, info)
+	err = ssPutVoice(v, info)
 	return
 }
 
 func (v *ISpeechSynthesizer) GetVoice(info **IVoiceInformation) (err error) {
-	err = synthGetVoice(v, info)
+	err = ssGetVoice(v, info)
 	return
 }

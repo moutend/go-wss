@@ -8,16 +8,16 @@ import (
 	"github.com/go-ole/go-ole"
 )
 
-func synthSynthesizeTextToStreamAsync(synth *ISpeechSynthesizer, text string, stream *ISpeechSynthesisStream) (err error) {
+func ssSynthesizeTextToStreamAsync(ss *ISpeechSynthesizer, text string, stream *ISpeechSynthesisStream) (err error) {
 	var hstr ole.HString
 
 	if hstr, err = ole.NewHString(text); err != nil {
 		return
 	}
 	hr, _, _ := syscall.Syscall(
-		synth.VTable().SynthesizeTextToStreamAsync,
+		ss.VTable().SynthesizeTextToStreamAsync,
 		3,
-		uintptr(unsafe.Pointer(synth)),
+		uintptr(unsafe.Pointer(ss)),
 		uintptr(hstr),
 		uintptr(unsafe.Pointer(stream)))
 	if hr != 0 {
@@ -26,16 +26,16 @@ func synthSynthesizeTextToStreamAsync(synth *ISpeechSynthesizer, text string, st
 	return
 }
 
-func synthSynthesizeSsmlToStreamAsync(synth *ISpeechSynthesizer, text string, stream *ISpeechSynthesisStream) (err error) {
+func ssSynthesizeSsmlToStreamAsync(ss *ISpeechSynthesizer, text string, stream *ISpeechSynthesisStream) (err error) {
 	var hstr ole.HString
 
 	if hstr, err = ole.NewHString(text); err != nil {
 		return
 	}
 	hr, _, _ := syscall.Syscall(
-		synth.VTable().SynthesizeSsmlToStreamAsync,
+		ss.VTable().SynthesizeSsmlToStreamAsync,
 		3,
-		uintptr(unsafe.Pointer(synth)),
+		uintptr(unsafe.Pointer(ss)),
 		uintptr(hstr),
 		uintptr(unsafe.Pointer(stream)))
 	if hr != 0 {
@@ -44,11 +44,11 @@ func synthSynthesizeSsmlToStreamAsync(synth *ISpeechSynthesizer, text string, st
 	return
 }
 
-func synthPutVoice(synth *ISpeechSynthesizer, info *IVoiceInformation) (err error) {
+func ssPutVoice(ss *ISpeechSynthesizer, info *IVoiceInformation) (err error) {
 	hr, _, _ := syscall.Syscall(
-		synth.VTable().PutVoice,
+		ss.VTable().PutVoice,
 		2,
-		uintptr(unsafe.Pointer(synth)),
+		uintptr(unsafe.Pointer(ss)),
 		uintptr(unsafe.Pointer(info)),
 		0)
 	if hr != 0 {
@@ -57,11 +57,11 @@ func synthPutVoice(synth *ISpeechSynthesizer, info *IVoiceInformation) (err erro
 	return
 }
 
-func synthGetVoice(synth *ISpeechSynthesizer, info **IVoiceInformation) (err error) {
+func ssGetVoice(ss *ISpeechSynthesizer, info **IVoiceInformation) (err error) {
 	hr, _, _ := syscall.Syscall(
-		synth.VTable().GetVoice,
+		ss.VTable().GetVoice,
 		2,
-		uintptr(unsafe.Pointer(synth)),
+		uintptr(unsafe.Pointer(ss)),
 		uintptr(unsafe.Pointer(info)),
 		0)
 	if hr != 0 {

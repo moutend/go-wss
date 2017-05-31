@@ -8,11 +8,11 @@ import (
 	"github.com/go-ole/go-ole"
 )
 
-func infoGetDisplayName(info *IVoiceInformation, name *ole.HString) (err error) {
+func viGetDisplayName(vi *IVoiceInformation, name *ole.HString) (err error) {
 	hr, _, _ := syscall.Syscall(
-		info.VTable().GetDisplayName,
+		vi.VTable().GetDisplayName,
 		2,
-		uintptr(unsafe.Pointer(info)),
+		uintptr(unsafe.Pointer(vi)),
 		uintptr(unsafe.Pointer(name)),
 		0)
 	if hr != 0 {
@@ -22,11 +22,11 @@ func infoGetDisplayName(info *IVoiceInformation, name *ole.HString) (err error) 
 	return
 }
 
-func infoGetId(info *IVoiceInformation, id *ole.HString) (err error) {
+func viGetId(vi *IVoiceInformation, id *ole.HString) (err error) {
 	hr, _, _ := syscall.Syscall(
-		info.VTable().GetId,
+		vi.VTable().GetId,
 		2,
-		uintptr(unsafe.Pointer(info)),
+		uintptr(unsafe.Pointer(vi)),
 		uintptr(unsafe.Pointer(id)),
 		0)
 	if hr != 0 {
@@ -36,11 +36,11 @@ func infoGetId(info *IVoiceInformation, id *ole.HString) (err error) {
 	return
 }
 
-func infoGetLanguage(info *IVoiceInformation, language *ole.HString) (err error) {
+func viGetLanguage(vi *IVoiceInformation, language *ole.HString) (err error) {
 	hr, _, _ := syscall.Syscall(
-		info.VTable().GetLanguage,
+		vi.VTable().GetLanguage,
 		2,
-		uintptr(unsafe.Pointer(info)),
+		uintptr(unsafe.Pointer(vi)),
 		uintptr(unsafe.Pointer(language)),
 		0)
 	if hr != 0 {
@@ -50,11 +50,11 @@ func infoGetLanguage(info *IVoiceInformation, language *ole.HString) (err error)
 	return
 }
 
-func infoGetDescription(info *IVoiceInformation, description *ole.HString) (err error) {
+func viGetDescription(vi *IVoiceInformation, description *ole.HString) (err error) {
 	hr, _, _ := syscall.Syscall(
-		info.VTable().GetDescription,
+		vi.VTable().GetDescription,
 		2,
-		uintptr(unsafe.Pointer(info)),
+		uintptr(unsafe.Pointer(vi)),
 		uintptr(unsafe.Pointer(description)),
 		0)
 	if hr != 0 {
@@ -64,11 +64,11 @@ func infoGetDescription(info *IVoiceInformation, description *ole.HString) (err 
 	return
 }
 
-func infoGetGender(info *IVoiceInformation, gender *ole.HString) (err error) {
+func viGetGender(vi *IVoiceInformation, gender *ole.HString) (err error) {
 	hr, _, _ := syscall.Syscall(
-		info.VTable().GetGender,
+		vi.VTable().GetGender,
 		2,
-		uintptr(unsafe.Pointer(info)),
+		uintptr(unsafe.Pointer(vi)),
 		uintptr(unsafe.Pointer(gender)),
 		0)
 	if hr != 0 {
