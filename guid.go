@@ -11,4 +11,5 @@ var (
 	IID_ISpeechSynthesizer2       = ole.NewGUID("{A7C5ECB2-4339-4D6A-BBF8-C7A4F1544C2E}")
 	IID_ISpeechSynthesizerOptions = ole.NewGUID("{A0E23871-CC3D-43C9-91B1-EE185324D83D}")
 	IID_IVoiceInformation         = ole.NewGUID("{B127D6A4-1291-4604-AA9C-83134083352C}")
+	IID_IMediaElement             = ole.NewGUID("{A38ED2CF-13DE-4299-ADE2-AE18F74ED353}")
 )
