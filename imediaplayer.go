@@ -58,3 +58,23 @@ type IMediaPlayerVtbl struct {
 func (v *IMediaPlayer) VTable() *IMediaPlayerVtbl {
 	return (*IMediaPlayerVtbl)(unsafe.Pointer(v.RawVTable))
 }
+
+func (v *IMediaPlayer) GetAutoPlay(state *bool) (err error) {
+	err = mpGetAutoPlay(v, state)
+	return
+}
+
+func (v *IMediaPlayer) PutAutoPlay(state bool) (err error) {
+	err = mpPutAutoPlay(v, state)
+	return
+}
+
+func (v *IMediaPlayer) Play() (err error) {
+	err = mpPlay(v)
+	return
+}
+
+func (v *IMediaPlayer) Pause() (err error) {
+	err = mpPause(v)
+	return
+}
