@@ -13,4 +13,6 @@ var (
 	IID_IVoiceInformation         = ole.NewGUID("{B127D6A4-1291-4604-AA9C-83134083352C}")
 	IID_IMediaElement             = ole.NewGUID("{A38ED2CF-13DE-4299-ADE2-AE18F74ED353}")
 	IID_IMediaPlayer              = ole.NewGUID("{381A83CB-6FFF-499B-8D64-2885DFC1249E}")
+
+	IID_IDataReader = ole.NewGUID("{E2B50029-B4C1-4314-A4B8-FB813A2F275E}")
 )
