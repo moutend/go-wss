@@ -15,4 +15,7 @@ var (
 	IID_IMediaPlayer              = ole.NewGUID("{381A83CB-6FFF-499B-8D64-2885DFC1249E}")
 
 	IID_IDataReader = ole.NewGUID("{E2B50029-B4C1-4314-A4B8-FB813A2F275E}")
+
+	IID_IBuffer           = ole.NewGUID("{905A0FE0-BC53-11DF-8C49-001E4FC686DA}")
+	IID_IBufferByteAccess = ole.NewGUID("905a0fef-bc53-11df-8c49-001e4fc686da")
 )
