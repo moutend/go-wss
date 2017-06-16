@@ -43,7 +43,7 @@ func (v *IVoiceInformation) GetDescription(description *ole.HString) (err error)
 	return
 }
 
-func (v *IVoiceInformation) GetGender(gender *ole.HString) (err error) {
+func (v *IVoiceInformation) GetGender(gender *VoiceGender) (err error) {
 	err = viGetGender(v, gender)
 	return
 }
