@@ -64,7 +64,7 @@ func viGetDescription(vi *IVoiceInformation, description *ole.HString) (err erro
 	return
 }
 
-func viGetGender(vi *IVoiceInformation, gender *ole.HString) (err error) {
+func viGetGender(vi *IVoiceInformation, gender *VoiceGender) (err error) {
 	hr, _, _ := syscall.Syscall(
 		vi.VTable().GetGender,
 		2,
