@@ -1,4 +1,5 @@
 // +build windows
+
 package wss
 
 import (
@@ -8,7 +9,7 @@ import (
 	"github.com/go-ole/go-ole"
 )
 
-func vvGetAt(vv *IVectorView, index uint16, voiceInformation **IVoiceInformation) (err error) {
+func vvGetAt(vv *iVectorView, index uint16, voiceInformation **iVoiceInformation) (err error) {
 	hr, _, _ := syscall.Syscall(
 		vv.VTable().GetAt,
 		3,
@@ -21,7 +22,7 @@ func vvGetAt(vv *IVectorView, index uint16, voiceInformation **IVoiceInformation
 	return
 }
 
-func vvGetSize(vv *IVectorView, size *uint16) (err error) {
+func vvGetSize(vv *iVectorView, size *uint16) (err error) {
 	hr, _, _ := syscall.Syscall(
 		vv.VTable().GetSize,
 		2,
@@ -34,7 +35,7 @@ func vvGetSize(vv *IVectorView, size *uint16) (err error) {
 	return
 }
 
-func vvIndexOf(vv *IVectorView, voiceInformation *IVoiceInformation, index *uint16, found *bool) (err error) {
+func vvIndexOf(vv *iVectorView, voiceInformation *iVoiceInformation, index *uint16, found *bool) (err error) {
 	hr, _, _ := syscall.Syscall6(
 		vv.VTable().IndexOf,
 		4,
@@ -50,6 +51,6 @@ func vvIndexOf(vv *IVectorView, voiceInformation *IVoiceInformation, index *uint
 	return
 }
 
-func vvGetMany(vv *IVectorView) (err error) {
+func vvGetMany(vv *iVectorView) (err error) {
 	return ole.NewError(ole.E_NOTIMPL)
 }

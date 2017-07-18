@@ -1,4 +1,5 @@
 // +build windows
+
 package wss
 
 import (
@@ -8,7 +9,7 @@ import (
 	"github.com/go-ole/go-ole"
 )
 
-func bbaBuffer(bba *IBufferByteAccess, bufPtr **byte) (err error) {
+func bbaBuffer(bba *iBufferByteAccess, bufPtr **byte) (err error) {
 	hr, _, _ := syscall.Syscall(
 		bba.VTable().Buffer,
 		2,

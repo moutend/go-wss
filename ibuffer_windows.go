@@ -1,4 +1,5 @@
 // +build windows
+
 package wss
 
 import (
@@ -8,7 +9,7 @@ import (
 	"github.com/go-ole/go-ole"
 )
 
-func bGetCapacity(b *IBuffer, capacity *uint32) (err error) {
+func bGetCapacity(b *iBuffer, capacity *uint32) (err error) {
 	hr, _, _ := syscall.Syscall(
 		b.VTable().GetCapacity,
 		2,
@@ -21,7 +22,7 @@ func bGetCapacity(b *IBuffer, capacity *uint32) (err error) {
 	return
 }
 
-func bGetLength(b *IBuffer, length *uint32) (err error) {
+func bGetLength(b *iBuffer, length *uint32) (err error) {
 	hr, _, _ := syscall.Syscall(
 		b.VTable().GetLength,
 		2,
@@ -34,7 +35,7 @@ func bGetLength(b *IBuffer, length *uint32) (err error) {
 	return
 }
 
-func bPutLength(b *IBuffer, length uint32) (err error) {
+func bPutLength(b *iBuffer, length uint32) (err error) {
 	hr, _, _ := syscall.Syscall(
 		b.VTable().PutLength,
 		2,

@@ -1,4 +1,5 @@
 // +build windows
+
 package wss
 
 import (
@@ -8,7 +9,7 @@ import (
 	"github.com/go-ole/go-ole"
 )
 
-func viGetDisplayName(vi *IVoiceInformation, name *ole.HString) (err error) {
+func viGetDisplayName(vi *iVoiceInformation, name *ole.HString) (err error) {
 	hr, _, _ := syscall.Syscall(
 		vi.VTable().GetDisplayName,
 		2,
@@ -22,7 +23,7 @@ func viGetDisplayName(vi *IVoiceInformation, name *ole.HString) (err error) {
 	return
 }
 
-func viGetId(vi *IVoiceInformation, id *ole.HString) (err error) {
+func viGetId(vi *iVoiceInformation, id *ole.HString) (err error) {
 	hr, _, _ := syscall.Syscall(
 		vi.VTable().GetId,
 		2,
@@ -36,7 +37,7 @@ func viGetId(vi *IVoiceInformation, id *ole.HString) (err error) {
 	return
 }
 
-func viGetLanguage(vi *IVoiceInformation, language *ole.HString) (err error) {
+func viGetLanguage(vi *iVoiceInformation, language *ole.HString) (err error) {
 	hr, _, _ := syscall.Syscall(
 		vi.VTable().GetLanguage,
 		2,
@@ -50,7 +51,7 @@ func viGetLanguage(vi *IVoiceInformation, language *ole.HString) (err error) {
 	return
 }
 
-func viGetDescription(vi *IVoiceInformation, description *ole.HString) (err error) {
+func viGetDescription(vi *iVoiceInformation, description *ole.HString) (err error) {
 	hr, _, _ := syscall.Syscall(
 		vi.VTable().GetDescription,
 		2,
@@ -64,7 +65,7 @@ func viGetDescription(vi *IVoiceInformation, description *ole.HString) (err erro
 	return
 }
 
-func viGetGender(vi *IVoiceInformation, gender *VoiceGender) (err error) {
+func viGetGender(vi *iVoiceInformation, gender *VoiceGender) (err error) {
 	hr, _, _ := syscall.Syscall(
 		vi.VTable().GetGender,
 		2,
