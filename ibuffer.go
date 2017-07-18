@@ -6,32 +6,29 @@ import (
 	"github.com/go-ole/go-ole"
 )
 
-type IBuffer struct {
+type iBuffer struct {
 	ole.IInspectable
 }
 
-type IBufferVtbl struct {
+type iBufferVtbl struct {
 	ole.IInspectableVtbl
 	GetCapacity uintptr
 	GetLength   uintptr
 	PutLength   uintptr
 }
 
-func (v *IBuffer) VTable() *IBufferVtbl {
-	return (*IBufferVtbl)(unsafe.Pointer(v.RawVTable))
+func (v *iBuffer) VTable() *iBufferVtbl {
+	return (*iBufferVtbl)(unsafe.Pointer(v.RawVTable))
 }
 
-func (v *IBuffer) GetCapacity(capacity *uint32) (err error) {
-	err = bGetCapacity(v, capacity)
-	return
+func (v *iBuffer) GetCapacity(capacity *uint32) error {
+	return bGetCapacity(v, capacity)
 }
 
-func (v *IBuffer) GetLength(length *uint32) (err error) {
-	err = bGetLength(v, length)
-	return
+func (v *iBuffer) GetLength(length *uint32) error {
+	return bGetLength(v, length)
 }
 
-func (v *IBuffer) PutLength(length uint32) (err error) {
-	err = bPutLength(v, length)
-	return
+func (v *iBuffer) PutLength(length uint32) error {
+	return bPutLength(v, length)
 }

@@ -6,11 +6,11 @@ import (
 	"github.com/go-ole/go-ole"
 )
 
-type IVectorView struct {
+type iVectorView struct {
 	ole.IInspectable
 }
 
-type IVectorViewVtbl struct {
+type iVectorViewVtbl struct {
 	ole.IInspectableVtbl
 	GetAt   uintptr
 	GetSize uintptr
@@ -18,21 +18,18 @@ type IVectorViewVtbl struct {
 	GetMany uintptr
 }
 
-func (v *IVectorView) VTable() *IVectorViewVtbl {
-	return (*IVectorViewVtbl)(unsafe.Pointer(v.RawVTable))
+func (v *iVectorView) VTable() *iVectorViewVtbl {
+	return (*iVectorViewVtbl)(unsafe.Pointer(v.RawVTable))
 }
 
-func (v *IVectorView) GetAt(index uint16, voiceInformation **IVoiceInformation) (err error) {
-	err = vvGetAt(v, index, voiceInformation)
-	return
+func (v *iVectorView) GetAt(index uint16, voiceInformation **iVoiceInformation) error {
+	return vvGetAt(v, index, voiceInformation)
 }
 
-func (v *IVectorView) GetSize(size *uint16) (err error) {
-	err = vvGetSize(v, size)
-	return
+func (v *iVectorView) GetSize(size *uint16) error {
+	return vvGetSize(v, size)
 }
 
-func (v *IVectorView) IndexOf(voiceInformation *IVoiceInformation, index *uint16, found *bool) (err error) {
-	err = vvIndexOf(v, voiceInformation, index, found)
-	return
+func (v *iVectorView) IndexOf(voiceInformation *iVoiceInformation, index *uint16, found *bool) error {
+	return vvIndexOf(v, voiceInformation, index, found)
 }

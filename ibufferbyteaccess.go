@@ -6,20 +6,19 @@ import (
 	"github.com/go-ole/go-ole"
 )
 
-type IBufferByteAccess struct {
+type iBufferByteAccess struct {
 	ole.IUnknown
 }
 
-type IBufferByteAccessVtbl struct {
+type iBufferByteAccessVtbl struct {
 	ole.IUnknownVtbl
 	Buffer uintptr
 }
 
-func (v *IBufferByteAccess) VTable() *IBufferByteAccessVtbl {
-	return (*IBufferByteAccessVtbl)(unsafe.Pointer(v.RawVTable))
+func (v *iBufferByteAccess) VTable() *iBufferByteAccessVtbl {
+	return (*iBufferByteAccessVtbl)(unsafe.Pointer(v.RawVTable))
 }
 
-func (v *IBufferByteAccess) Buffer(bufPtr **byte) (err error) {
-	err = bbaBuffer(v, bufPtr)
-	return
+func (v *iBufferByteAccess) Buffer(bufPtr **byte) error {
+	return bbaBuffer(v, bufPtr)
 }

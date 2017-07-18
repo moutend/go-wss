@@ -6,11 +6,11 @@ import (
 	"github.com/go-ole/go-ole"
 )
 
-type IVoiceInformation struct {
+type iVoiceInformation struct {
 	ole.IInspectable
 }
 
-type IVoiceInformationVtbl struct {
+type iVoiceInformationVtbl struct {
 	ole.IInspectableVtbl
 	GetDisplayName uintptr
 	GetId          uintptr
@@ -19,31 +19,26 @@ type IVoiceInformationVtbl struct {
 	GetGender      uintptr
 }
 
-func (v *IVoiceInformation) VTable() *IVoiceInformationVtbl {
-	return (*IVoiceInformationVtbl)(unsafe.Pointer(v.RawVTable))
+func (v *iVoiceInformation) VTable() *iVoiceInformationVtbl {
+	return (*iVoiceInformationVtbl)(unsafe.Pointer(v.RawVTable))
 }
 
-func (v *IVoiceInformation) GetDisplayName(name *ole.HString) (err error) {
-	err = viGetDisplayName(v, name)
-	return
+func (v *iVoiceInformation) GetDisplayName(name *ole.HString) error {
+	return viGetDisplayName(v, name)
 }
 
-func (v *IVoiceInformation) GetId(id *ole.HString) (err error) {
-	err = viGetId(v, id)
-	return
+func (v *iVoiceInformation) GetId(id *ole.HString) error {
+	return viGetId(v, id)
 }
 
-func (v *IVoiceInformation) GetLanguage(language *ole.HString) (err error) {
-	err = viGetLanguage(v, language)
-	return
+func (v *iVoiceInformation) GetLanguage(language *ole.HString) error {
+	return viGetLanguage(v, language)
 }
 
-func (v *IVoiceInformation) GetDescription(description *ole.HString) (err error) {
-	err = viGetDescription(v, description)
-	return
+func (v *iVoiceInformation) GetDescription(description *ole.HString) error {
+	return viGetDescription(v, description)
 }
 
-func (v *IVoiceInformation) GetGender(gender *VoiceGender) (err error) {
-	err = viGetGender(v, gender)
-	return
+func (v *iVoiceInformation) GetGender(gender *VoiceGender) error {
+	return viGetGender(v, gender)
 }
